@@ -1,0 +1,156 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+{% include 'pages/topbar.html' %}
+
+<!-- START SECTION BANNER -->
+<div class="banner_section full_screen staggered-animation-wrap">
+    <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow carousel_style2" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active background_bg overlay_bg_50" data-img-src="{% static 'assets/images/product3.png' %}">
+                <div class="banner_slide_content banner_content_inner">
+                	<div class="container">
+                    	<div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-10">
+                                <div class="banner_content text_white text-center">
+                                    <h5 class="mb-3 bg_strip staggered-animation text-uppercase" data-animation="fadeInDown" data-animation-delay="0.2s">FRESH STOCK AVAILABLE</h5>
+                                    <h2 class="staggered-animation" data-animation="fadeInDown" data-animation-delay="0.3s">Start Strong, Live Well</h2>
+                                    <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">Quick. Nutritious. Loved by families everywhere.</p>
+                                    <a class="btn btn-white staggered-animation" href="shop" data-animation="fadeInUp" data-animation-delay="0.5s">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item background_bg overlay_bg_50" data-img-src="{% static 'assets/images/logo20.png' %}">
+                <div class="banner_slide_content banner_content_inner">
+                	<div class="container">
+                    	<div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-10">
+                                <div class="banner_content text_white text-center">
+                                    <h5 class="mb-3 staggered-animation font-weight-light" data-animation="fadeInDown" data-animation-delay="0.2s">Everything You Need, All in One Place.</h5>
+                                    <h2 class="staggered-animation" data-animation="fadeInDown" data-animation-delay="0.3s">Affordable. Reliable. Always available.</h2>
+                                    <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">Enjoy a seamless shopping experience with top-quality products, friendly service, and a wide range of daily needs.</p>
+                                    <a class="btn btn-white staggered-animation" href="shop" data-animation="fadeInUp" data-animation-delay="0.4s">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item background_bg overlay_bg_60" data-img-src="{% static 'assets/images/logo52.png' %}">
+                <div class="banner_slide_content banner_content_inner">
+                	<div class="container">
+                    	<div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-10">
+                                <div class="banner_content text_white text-center">
+                                    <h5 class="mb-3 staggered-animation font-weight-light" data-animation="fadeInDown" data-animation-delay="0.2s">Your Daily Dose of Comfort, in Every Sip</h5>
+                                    <h2 class="staggered-animation" data-animation="fadeInDown" data-animation-delay="0.3s">Premium Drinks & Creamy Delights</h2>
+                                    <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">From rich coffee blends to creamy milk powders, discover everything you need to make your mornings brighter and your evenings warmer.</p>
+                                    <a class="btn btn-white staggered-animation" href="shop" data-animation="fadeInUp" data-animation-delay="0.4s">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev"><i class="ion-chevron-left"></i></a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next"><i class="ion-chevron-right"></i></a>
+    </div>
+</div>
+<!-- END SECTION BANNER -->
+
+<!-- END MAIN CONTENT -->
+<div class="main_content">
+
+<!-- START SECTION CATEGORIES -->
+<div class="section pt-0 small_pb">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-12">
+            	<div class="cat_overlap radius_all_5">
+                	<div class="row align-items-center">
+        				<div class="col-lg-3 col-md-4">
+                        	<div class="text-center text-md-start">
+                                <h4>Top Categories</h4>
+                                <p class="mb-2">Explore our most popular product categories, handpicked for you.</p>
+                                <a href="#" class="btn btn-line-fill btn-sm">View All</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-8">
+                            <div class="cat_slider mt-4 mt-md-0 carousel_slider owl-carousel owl-theme nav_style5" data-loop="true" data-dots="false" data-nav="true" data-margin="30" data-responsive='{"0":{"items": "1"}, "380":{"items": "2"}, "991":{"items": "3"}, "1199":{"items": "4"}}'>
+                                {% for i in categories %}
+                                <div class="item">
+                                    <div class="categories_box">
+                                        <a href="#">
+                                            <i class="{{i.icon}}"></i>
+                                            <span>{{i.name}}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                
+                            </div>
+                        </div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SECTION CATEGORIES -->
+
+<!-- START SECTION SHOP -->
+<div class="section small_pt pb_70">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+                <div class="heading_s4 text-center">
+                    <h2>Our Top Products</h2>
+                </div>
+                <p class="text-center leads"> Quench your thirst with our finest selection of refreshing beverages 
+      crafted to keep you energized, cool, and satisfied anytime.</p>
+            </div>
+		</div>
+        <div class="row shop_container">
+            {% for i in products %}
+                <div class="col-lg-3 col-md-4 col-6">
+                <div class="product_box text-center">
+                    <div class="product_img">
+                        <a href="{% url 'product_detail'  slug=i.slug %}">
+                            <img src="{{i.image1.url }}" alt="furniture_img1">
+                        </a>
+                        
+                    </div>
+                    <div class="product_info">
+                        <h6 class="product_title"><a href="{% url 'product_detail'  slug=i.slug %}">{{i.name}}</a></h6>
+                        <div class="product_price">
+                            <span class="price">₦{{i.price | intcomma}}</span>
+                            
+                        </div>
+                        <!-- <div class="rating_wrap">
+                            <div class="rating">
+                                <div class="product_rate" style="width:80%"></div>
+                            </div>
+                            <span class="rating_num">(21)</span>
+                        </div> -->
+                        <div class="pr_desc">
+                            <p>{{ i.description }}</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+
+            {% endfor %}
+        </div> 
+    </div>
+</div>
+<!-- END SECTION SHOP -->
+
+{% endblock content %}

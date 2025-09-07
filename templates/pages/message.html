@@ -1,0 +1,11 @@
+<!-- message alert with bootstrap 5 -->
+{% if messages %}
+    {% for i in messages %}
+        <div class="container col-lg-3 mx-auto mt-2 mb-4">
+            <div class="alert alert-{{i.tags}}">
+            {{i}}
+        </div>
+        </div>
+    {% endfor %}
+        
+{% endif %}

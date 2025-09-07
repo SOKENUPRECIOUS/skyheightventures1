@@ -1,0 +1,101 @@
+
+{% extends 'pages/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+{% include 'pages/nav.html' %}
+
+
+
+
+<!-- START MAIN CONTENT -->
+<div class="main_content">
+
+<!-- START SECTION SHOP -->
+<div class="section">
+	<div class="container">
+    	<div class="row">
+			<div class="col-lg-9">
+            	 
+                <div class="row shop_container grid">
+                   {% if page_obj %}
+                    
+                   
+                   {% for i  in page_obj  %}
+                     <div class="col-md-4 col-6">
+                        <div class="product">
+                            <div class="product_img">
+                                <a href="{% url  'product_detail' slug=i.slug %}">
+                                    <img src="{{i.image1.url }}" alt="product_img1">
+                                </a>
+                                
+                            </div>
+                            <div class="product_info">
+                                <h6 class="product_title"><a href="{% url  'product_detail' slug=i.slug %}">{{i.name}}</a></h6>
+                                <div class="product_price">
+                                    <span class="price">₦{{i.price | intcomma}}</span>
+                
+                                    
+                                </div>
+                                <!-- <div class="rating_wrap">
+                                    <div class="rating">
+                                        <div class="product_rate" style="width:80%"></div>
+                                    </div>
+                                    <span class="rating_num">(21)</span>
+                                </div> -->
+                                <div class="pr_desc">
+                                    <p>{{i.description}}</p>
+                                </div>
+                                
+                                <div class="list_product_action_box">
+                                    <ul class="list_none pr_action_btn">
+                                        <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
+                                        <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                        <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
+                                        <li><a href="#"><i class="icon-heart"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   {% endfor %}              
+                   {% else %}
+                   <h3>Product not Found</h3>
+                   {% endif %}
+                    
+                    
+                </div>
+        		<div class="row">
+                    <div class="col-12">
+                        <ul class="pagination mt-3 justify-content-center pagination_style1">
+
+                            
+                            {% if page_obj.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?search={{search_query}}&page=1">First</a></li>
+                                 
+                                <li class="page-item"><a class="page-link" href="?search={{search_query}}&page={{page_obj.previous_page_number}}"><i class="linearicons-arrow-left"></i></a></li>
+
+                            {% endif %}
+                            <li> Page{{page_obj.number}} of {{page_obj.paginator.num_pages}}</li>
+                            
+                            {% if  page_obj.has_next %}
+                                <li class="page-item"><a class="page-link" href="?search={{search_query}}&page={{ page_obj.next_page_number}}"><i class="linearicons-arrow-right"></i></a></li>
+                                 
+                                <li class="page-item"><a class="page-link" href="?search={{search_query}}&page={{ page_obj.paginator.num_pages}}">Last</a></li>
+
+                            {% endif %}
+                                
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+        	</div>
+            
+        </div>
+    </div>
+</div>
+<!-- END SECTION SHOP -->
+
+{% endblock content %}

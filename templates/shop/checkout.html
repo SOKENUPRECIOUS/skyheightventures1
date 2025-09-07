@@ -1,0 +1,164 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+{% include 'pages/nav.html' %}
+
+
+<!-- START SECTION BREADCRUMB -->
+<div class="breadcrumb_section bg_gray page-title-mini">
+    <div class="container"><!-- STRART CONTAINER -->
+        <div class="row align-items-center">
+        	<div class="col-md-6">
+                <div class="page-title">
+            		<h1>Checkout</h1>
+                </div>
+            </div>
+           
+        </div>
+    </div><!-- END CONTAINER-->
+</div>
+<!-- END SECTION BREADCRUMB -->
+
+<!-- START MAIN CONTENT -->
+<div class="main_content">
+
+<!-- START SECTION SHOP -->
+<div class="section">
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+            	<div class="toggle_info">
+                	<span><i class="fas fa-user"></i>Returning customer? <a href="#loginform" data-bs-toggle="collapse" class="collapsed" aria-expanded="false">Click here to login</a></span>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-12">
+            	<div class="medium_divider"></div>
+            	<div class="divider center_icon"><i class="linearicons-credit-card"></i></div>
+            	<div class="medium_divider"></div>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-md-6">
+            	<div class="heading_s1">
+            		<h4>Billing Details</h4>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <input type="text" required class="form-control" name="firstname" placeholder="First name *" value="{{request.user.first_name}}" disabled>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" required class="form-control" name="lastame" placeholder="Last name *" value="{{request.user.last_name}}" disabled>
+                    </div>
+                   
+                    <div class="form-group mb-3">                       
+                    <textarea class="form-control"  name="address1" required placeholder="Address1 *"></textarea>
+                     </div>
+                       <div class="form-group mb-3">                       
+                    <textarea class="form-control"  name="address2" placeholder="Address2"></textarea>
+                     </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" required type="text" name="city" placeholder="City / Town *">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" required type="text" name="state" placeholder="State *">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" required type="text" name="country" placeholder="County *">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" required type="text" name="zipcode" placeholder="ZIP *">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" required type="text" name="phone" placeholder="Phone *">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" required type="text" name="email" placeholder="Email address *" value="{{request.user.email}}" disabled>
+                    </div>
+                    
+                    
+                    <!-- <div class="heading_s1">
+                        <h4>Additional information</h4>
+                    </div>
+                    <div class="form-group mb-0">
+                        <textarea rows="5" class="form-control" placeholder="Order notes"></textarea>
+                    </div> -->
+                    <button type="submit" class="btn btn-fill-out btn-block">Place Order</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="order_review">
+                    <div class="heading_s1">
+                        <h4>Your Orders</h4>
+                    </div>
+                    <div class="table-responsive order_table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              
+                              {% for item in items  %}
+                                  <tr>
+                                    <td>{{item.product.name}} <span class="product-qty">x {{item.quantity}}</span></td>
+                                    <td>₦{{item.product.price | intcomma}}</td>
+                                </tr>
+                              {% endfor %}
+                                
+                                
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SubTotal</th>
+                                    <!-- <td class="product-subtotal">$349.00</td> -->
+                                </tr>
+                                <tr>
+                                    <th>Shipping</th>
+                                    <td>Free Shipping</td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td class="product-subtotal">₦{{total | intcomma}}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="payment_method">
+                        <div class="heading_s1">
+                            <h4>Payment</h4>
+                        </div>
+                        <div class="payment_option">
+                            <div class="custome-radio">
+                                <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" value="option3" checked="">
+                                <label class="form-check-label" for="exampleRadios3">Direct Bank Transfer</label>
+                                <p data-method="option3" class="payment-text">Kindly make payment of the exact order amount to the account details provided.<br> 
+                                Account Number: 7036830222<br>
+                                Back name: Moniepoint mfb<br>
+                                Account Name: Sky Height Ventures  </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+<!-- END SECTION SHOP -->
+</div>
+<!-- END MAIN CONTENT -->
+
+
+    
+{% endblock content %}
