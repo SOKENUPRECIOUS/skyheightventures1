@@ -2836,7 +2836,6 @@ input.text {
 	width: 100%;
 }
 .wave_shape_bottom::before {
-	/* background-image: url("../images/wave_shape.png"); */
 	display: block;
 	height: 100%;
 	content: "";
