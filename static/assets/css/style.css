@@ -2836,7 +2836,7 @@ input.text {
 	width: 100%;
 }
 .wave_shape_bottom::before {
-	background-image: url("../images/wave_shape.png");
+	/* background-image: url("../images/wave_shape.png"); */
 	display: block;
 	height: 100%;
 	content: "";
@@ -7229,6 +7229,7 @@ blockquote p:last-child {
 /*Migrating to v5*/
 .btn-block {
     display: block;
+
     width: 100%;
 }
 .nav-link {
