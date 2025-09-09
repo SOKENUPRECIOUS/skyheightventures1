@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z4+y_d6s*zpb-oyy8_3zjdmq5_k8naq)mody!7pw(q96r)xr8r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -123,14 +123,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR /'static'
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     BASE_DIR /'static'
+# ]
+# STATIC_ROOT = BASE_DIR / 'media'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # for collectstatic on Render
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # your local static folder
+]
+
+# Media files (uploads, product images, etc.)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
